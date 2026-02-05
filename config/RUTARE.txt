@@ -1,0 +1,50 @@
+RUTARE STATICA:
+Network: pui ip ul clasei (primul) pt unde vrei sa ajunga mesajul adica ala de pe 0/0
+Mask: masca ip ului
+Next Hop: pui ip ul routerului unde ajunge mesajul dar de pe 0/1
+
+ex:
+	     	193	101            102     1
+
+PC0 ---------------- R0 ------------------- R1 ------------------ PC1
+  207.69.145.192/28      10.10.10.100/30          1.2.3.0/27
+
+PC0 -> PC1:
+Network: 1.2.3.0
+Mask: 255.255.255.224
+Next Hop: 10.10.10.102
+
+PC1 -> PC0:
+Network: 207.69.145.192
+Mask: 255.255.255.240
+Next Hop: 10.10.10.101
+
+RUTARE DINAMICA:
+- se utilizeaza toate ip urile stiute de router
+- se pune ip ul de retea
+se pune la network clasa de ip (nu pui primul ip care este pus pe router)
+ex:
+pe R0:
+enable
+CTRL + Z
+conf t
+router rip
+version 2
+no auto-summary
+network 207.69.145.192
+network 10.10.10.100
+CTRL + Z
+wr mem
+
+pe R1:
+enable
+CTRL + Z
+conf t
+router rip
+version 2
+no auto-summary
+network 1.2.3.0
+network 10.10.10.100
+
+
+

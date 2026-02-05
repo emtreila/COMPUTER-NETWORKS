@@ -1,0 +1,38 @@
+!!!NU UITA SA PUI DNS PE SERVERE
+
+DNS
+
+Services -> DNS -> DNS Service: On
+	Name: test.com
+	Type: A Record
+	Address: adresa serverului WEB (ex: 1.2.3.2)
+- apoi dai Add
+- trebuie sa apara ceva gen:
+0       test.com         A Record          1.2.3.2
+
+
+DHCP
+
+Services -> DHCP -> Service: On
+Default Gateway: acelasi ca pe computer (ip ul routerului primul)
+DNS Server: ip ul serverului unde e configurat DNS
+Start IP Address: de la ce ip se poate folosi (inafara de primele 2 = router + server)
+Subnet Mask: masca clasei unde se afla serverul
+Maximum Number Of Users: nr de adrese ce pot fi utilizate (ex: /27 = 32 adrese , dar -2 pt ip lui + broadcast si -2 pt router + server => 28 users valabili) 
+Add / Save
+
+- dupa mergi in PC urile din acelasi subnet si setezi din Config -> DHCP
+
+ex:
+Default Gateway: 1.2.3.1
+DNS Server: 207.69.145.194
+Start IP Address: 1.2.3.3
+Subnet Mask: 255.255.255.224
+Maximum Number Of Users: 28
+
+WEB
+
+Services -> HTTP -> On
+index.html -> schimbat
+Desktop -> Web Browser -> ip ul serverului web
+	-> Web Browser -> numele pus la DNS

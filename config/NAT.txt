@@ -1,0 +1,27 @@
+- iti alegi main intai pe ce calculator vrei sa pui NAT si ii iei ip ul si folosesti si ip ul dinafara subnetului tau
+- NAT se face prin routerul prin care trece mesajul, care ii cu calculatorul pe care vrei sa pui NAT
+
+ex:
+
+195	    193fa0/0	101fa0/1            102     1
+
+PC0 ---------------- R0 ------------------- R1 ------------------ PC1
+  207.69.145.192/28      10.10.10.100/30          1.2.3.0/27
+
+Router#conf t
+Router(config)#interface fastEthernet 0/0
+Router(config-if)#ip nat inside
+Router(config-if)#exit
+Router(config)#interface fastEthernet 0/1
+Router(config-if)#ip nat outside
+Router(config-if)#exit
+Router(config)#ip nat inside source static 207.69.145.195 10.10.10.101
+
+conf t
+interface fastEthernet 0/0
+ip nat inside
+exit
+interface ethernet 0/1/0
+ip nat outside
+exit
+ip nat inside source static 33.253.93.195 33.253.93.234

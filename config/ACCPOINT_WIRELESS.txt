@@ -1,0 +1,13 @@
+ACCESS POINT
+- pe port 1 -> schimbi numele
+- pui laptop -> opresti laptop -> pui placa  PT-LAPTOP-NM-1W -> setezi DHCP 
+- dupa din Config -> Wireless -> pui numele retelei de la access point
+
+WIRELESS 300N 1W pt laptop
+- il conectezi prin cablu la Internet (din routerul wireless)
+- din GUI -> Automatic Configuration DHCP
+- pui un PC nou si setezi sa fie DHCP
+- internet -> static si completezi tu
+
+
+- tel la access point la ip conifg dai static (daca nu ai server de dhcp)
